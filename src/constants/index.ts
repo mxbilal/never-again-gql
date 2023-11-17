@@ -1,0 +1,26 @@
+export const brandCategories = [
+    'Car',
+    'Food',
+    'Coffee',
+    'Clothing',
+    'Weapons',
+    'Technology',
+    'Supermarket',
+    'Politics',
+    'Pharmaceuticals',
+    'Manufacturer',
+    'Luxury',
+    'Insurance',
+    'Household',
+    'Education',
+    'Healthcare',
+    'Finance',
+    'Fashion',
+    'Entertainment',
+    'Drinks',
+    'Cosmetics',
+    'Contractor',
+    'Travel',
+    'Hotel'
+  ]
+  
