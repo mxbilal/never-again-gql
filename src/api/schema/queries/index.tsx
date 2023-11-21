@@ -44,8 +44,18 @@ export default {
     }
   `,
   exploreCategories: gql`
-    query exploreCategories($categoryName: String!) {
-      brands(where: { linking_some: { Category: { name: $categoryName } } }) {
+    query exploreCategories(
+      $categoryName: String!
+      $first: Int
+      $value: String
+    ) {
+      brands(
+        first: $first
+        where: {
+          linking_some: { Category: { name: $categoryName } }
+          _search: $value
+        }
+      ) {
         id
         name
         icon {
@@ -89,6 +99,8 @@ export default {
         description
         dateOfBirth
         height
+        profileUrl
+        proofLinks
       }
     }
   `,
@@ -111,4 +123,51 @@ export default {
       }
     }
   `,
+  brandsNearMe: gql`
+    query brandsNearMe(
+      $orderBy: BrandOrderByInput
+      $latitude: Float!
+      $longitude: Float!
+      $first: Int
+      $skip: Int
+    ) {
+      brands(orderBy: $orderBy, first: $first, skip: $skip) {
+        id
+        description
+        name
+        icon {
+          url
+        }
+        path
+        gps {
+          distance(from: { latitude: $latitude, longitude: $longitude })
+        }
+      }
+    }
+  `,
+  scanBrands: gql`
+    query getScannedBrands($value: String) {
+      brands(
+        orderBy: createdAt_ASC
+        first: 100000
+        where: { _search: $value }
+      ) {
+        id
+        description
+        name
+        icon {
+          url
+        }
+        path
+      }
+    }
+  `,
+  brandCount: gql`
+    query getBrandCount{
+      brandsConnection {
+        aggregate {
+          count
+        }
+      }
+    }`,
 };

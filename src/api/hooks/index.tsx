@@ -69,12 +69,23 @@ export function getCategories(): Response {
   }
 }
 
-export function exploreCategories(categoryName: string): Response {
+export function exploreCategories(
+  categoryName: string,
+  value: any,
+  first: any
+): Response {
   try {
-    const { loading, error, data } = useQuery(schema.exploreCategories, {
-      variables: { categoryName },
-    });
-    return { loading, error, data };
+    const { loading, error, data, refetch } = useQuery(
+      schema.exploreCategories,
+      {
+        variables: {
+          categoryName,
+          first,
+          ...(value && value.length > 2 ? { value } : { value: "" }),
+        },
+      }
+    );
+    return { loading, error, data, refetch };
   } catch (err) {
     console.log("error", err);
     return { loading: false };
@@ -94,12 +105,15 @@ export function getPeopleCategories(): Response {
 export function getCategoryPeoples(props: ID): Response {
   try {
     let { id } = props;
-    const { loading, error, data } = useQuery(schema.getCategoryPeoples, {
-      variables: {
-        id,
-      },
-    });
-    return { loading, error, data };
+    const { loading, error, data, refetch } = useQuery(
+      schema.getCategoryPeoples,
+      {
+        variables: {
+          id,
+        },
+      }
+    );
+    return { loading, error, data, refetch };
   } catch (err) {
     console.log("error", err);
     return { loading: false };
@@ -139,5 +153,58 @@ export function getPeople({
   } catch (err) {
     console.log("error", err);
     return { pLoad: false };
+  }
+}
+
+export function brandsNearMe({
+  orderBy,
+  latitude,
+  longitude,
+  first,
+  skip,
+}: any) {
+  try {
+    const { loading, error, data, refetch } = useQuery(schema.brandsNearMe, {
+      variables: {
+        orderBy,
+        latitude,
+        longitude,
+        first,
+        skip,
+      },
+    });
+
+    return { loading, error, data, refetch };
+  } catch (err) {
+    console.error("Error in useBrands:", err);
+    return { loading: false };
+  }
+}
+
+export function getScannedBrands(value: any, first: any, skip: any) {
+  try {
+    const { loading, error, data } = useQuery(schema.scanBrands, {
+      variables: {
+        value,
+        first,
+        skip,
+      },
+    });
+
+    return { scanLoading: loading, scanError: error, scanData: data };
+  } catch (err) {
+    console.error("Error in useBrands:", err);
+    return { loading: false };
+  }
+}
+
+export function getBrandCount() {
+  try {
+    const { loading, error, data } = useQuery(schema.brandCount);
+
+    return { countLoading: loading, countError: error, countData: data };
+  } catch (err) {
+    console.error("Error in getBrandCount:", err);
+    return { loading: false };
   }
 }

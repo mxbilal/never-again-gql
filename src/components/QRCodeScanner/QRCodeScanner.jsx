@@ -48,7 +48,12 @@ const Html5QrcodePlugin = (props) => {
     };
   }, []);
 
-  return <div id={qrcodeRegionId} />;
+  return (
+    <div
+      className="flex flex-col justify-center items-center text-center"
+      id={qrcodeRegionId}
+    />
+  );
 };
 
 export default Html5QrcodePlugin;

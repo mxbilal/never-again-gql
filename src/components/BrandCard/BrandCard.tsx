@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import slugify from "slugify";
+// import slugify from "slugify";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import { BrandCardProps } from "@/types";
@@ -11,19 +11,18 @@ const BrandCard: React.FC<BrandCardProps> = ({
   brand,
 }) => {
   const navigate = useNavigate();
-  console.log("brand Information", brand);
   const handleBrandClick = () => {
-    navigate(`/categories/brands/${brand?.id}`);
+    navigate(`/categories/brands/${brand?.name}`, { state: { id: brand.id } });
   };
 
-  const brandSlug: string = slugify(brandTitle, { lower: true });
+  // const brandSlug: string = slugify(brandTitle, { lower: true });
 
   return (
     <div className="w-full">
       <Card className="w-full flex flex-col justify-center items-center md:grid md:grid-cols-12 py-3 px-3 mb-2 min-h-[9.375rem]">
         <div className="col-span-2 md:col-span-2 group">
           <img
-            className="mx-auto md:mx-[1.528rem] max-w-[12.5rem] w-full rounded-full transition-transform duration-300 transform group-hover:rounded-none"
+            className="mx-auto md:mx-[1.528rem] max-w-[12.5rem] w-full"
             src={imageSrc}
             alt="Brand Image"
           />

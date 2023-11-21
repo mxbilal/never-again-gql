@@ -13,7 +13,7 @@ const Footer = () => {
           - - - - - - - - - - - - - - - - -
         </div>
         <div
-          className="flex flex-col justify-center items-center underline"
+          className="flex flex-col justify-center items-center"
           id="footerLinks"
         >
           <Link to="/about">About Never Again</Link>

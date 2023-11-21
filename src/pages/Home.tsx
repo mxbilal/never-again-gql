@@ -2,16 +2,7 @@ import Search from "@/components/Search";
 import BrandCard from "@/components/BrandCard/BrandCard";
 import { Button } from "@/components/ui/button";
 
-// import Yves from "../assets/images/yves-saint-laurent-logo.svg";
-// import Yum from "../assets/images/yum-logo.svg";
-// import Wix from "../assets/images/wix-logo.svg";
-// import Wells from "../assets/images/wells-fargo-logo.svg";
-// import Waze from "../assets/images/waze-logo.svg";
-// import Walmart from "../assets/images/walmart-logo.svg";
-// import Walls from "../assets/images//walls-logo.svg";
-// import Walkers from "../assets/images/walkers-logo.svg";
-// import Volvo from "../assets/images/volvo-logo.jpg";
-// import Vittel from "../assets/images/vittel-logo.svg";
+import Loader from "@/components/Loader";
 import { useBrands } from "@/api/hooks";
 import { useState, useEffect } from "react";
 
@@ -38,14 +29,15 @@ const Home = () => {
     return debounce(value);
   };
   useEffect(() => {
-    console.log("rr");
     refetch({ value: "", first });
   }, [first]);
   // useEffect(() => {
   //   if (value.length > 2 && refetch) refetch({ value });
   // }, [value]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <Loader />;
+  }
   if (error) return <p>Error : {error.message}</p>;
   return (
     <section className="w-full flex flex-col justify-center items-center">
@@ -65,30 +57,16 @@ const Home = () => {
         className="w-full flex flex-col flex-nowrap justify-center items-center"
         id="brandCards"
       >
-        {
-          data?.brands?.map?.((brand) => {
-            return (
-              <BrandCard
-                imageSrc={brand?.icon?.url}
-                brandTitle={brand?.name}
-                brand={brand}
-              />
-            );
-          })
-          /* <BrandCard
-          imageSrc={Yves}
-          brandTitle="Yves Saint Laurent / YSL Beauty"
-        />
-        <BrandCard imageSrc={Yum} brandTitle="Yum Foods"  />
-        <BrandCard imageSrc={Wix} brandTitle="Wix" />
-        <BrandCard imageSrc={Wells} brandTitle="Wells Fargo" />
-        <BrandCard imageSrc={Waze} brandTitle="Waze" />
-        <BrandCard imageSrc={Walmart} brandTitle="Walmart" />
-        <BrandCard imageSrc={Walls} brandTitle="Walls Ice Creams" />
-        <BrandCard imageSrc={Walkers} brandTitle="Walker's" />
-        <BrandCard imageSrc={Volvo} brandTitle="Volvo Heavy Machinery" />
-        <BrandCard imageSrc={Vittel} brandTitle="Vittel" /> */
-        }
+        {data?.brands?.map?.((brand: any) => {
+          return (
+            <BrandCard
+              key={brand?.id}
+              imageSrc={brand?.icon?.url}
+              brandTitle={brand?.name}
+              brand={brand}
+            />
+          );
+        })}
       </div>
       {/* <div className="w-full my-3 px-3 flex justify-start items-start">
         <Button variant="outline">

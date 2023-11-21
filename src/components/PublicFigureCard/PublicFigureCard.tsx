@@ -18,9 +18,10 @@ const PublicFigureCard: React.FC<PublicFigureCardProps> = ({
   // based on variant the correct handler funtion should be called
   const handlePublicFigureClick = (publicFigureSlug: object) => {
     console.log("handler", publicFigureSlug);
-    if (publicFigureSlug?.peopleCategory?.title === "Politicians")
-      navigate(`/categories/politicians/${publicFigureSlug?.id}`);
-    else navigate(`/categories/celebrities/${publicFigureSlug?.id}`);
+    const { id, name, peopleCategory } = publicFigureSlug;
+    if (peopleCategory?.title === "Politicians")
+      navigate(`/categories/politicians/${name}`, { state: { id } });
+    else navigate(`/categories/celebrities/${name}`, { state: { id } });
   };
 
   // const handlePublicFigureClick = (publicFigureSlug: string) => {

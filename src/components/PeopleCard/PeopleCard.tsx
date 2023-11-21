@@ -6,7 +6,7 @@ import { PeopleCardProps } from "@/types";
 import { getCategoryTitle } from "@/utils/getCategoryTitle";
 import { getPeopleTypeImage } from "@/utils/getPeopleTypeImage";
 
-const PeopleCard: React.FC<PeopleCardProps> = ({ variant, handleClick, category }) => {
+const PeopleCard: React.FC<PeopleCardProps> = ({ variant, handleClick,  category }) => {
   const title = getCategoryTitle("people", variant);
   const imageSrc = getPeopleTypeImage(variant);
 
