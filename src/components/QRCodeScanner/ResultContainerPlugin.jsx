@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import BarcodeDecoder from "../BarcodeDecoder";
 import { getScannedBrands } from "@/api/hooks";
+
+import BrandCard from "../BrandCard";
 import Loader from "../Loader";
 import decodeBarcode from "../../utils/decodeBarcode";
 
@@ -97,10 +98,16 @@ const ResultContainerPlugin = (props) => {
         <ResultContainerTable data={results} />
       </div>
       <div>
-        {scanData?.brands?.map?.((brand, index) => (
+        {scanData?.brands?.map?.((product, index) => (
           <div key={index}>
             <h2>Brand found to boycott</h2>
             <h3>{brand.name}</h3>
+            <BrandCard
+              key={product?.id}
+              imageSrc={product?.imageUrl}
+              brandTitle={product?.brand}
+              brand={product?.brand}
+            />
           </div>
         ))}
       </div>

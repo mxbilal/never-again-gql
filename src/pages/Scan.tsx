@@ -15,9 +15,9 @@ const Scan = () => {
   };
 
   return (
-    <section className="w-full flex flex-col justify-center items-center text-center">
+    <section className="w-full flex flex-col justify-center items-center text-center my-4">
       <h2>Scan barcode</h2>
-      <div className="w-full px-6 md:px-3 my-4">
+      <div className="w-full px-6 md:px-3">
         <Html5QrcodePlugin
           fps={10}
           qrbox={250}

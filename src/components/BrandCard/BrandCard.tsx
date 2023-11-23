@@ -12,7 +12,9 @@ const BrandCard: React.FC<BrandCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const handleBrandClick = () => {
-    navigate(`/categories/brands/${brand?.name}`, { state: { id: brand.id } });
+    navigate(`/categories/brands/${brand?.name.toLocaleLowerCase()}`, {
+      state: { id: brand.id, name: brand?.name },
+    });
   };
 
   // const brandSlug: string = slugify(brandTitle, { lower: true });
@@ -27,7 +29,7 @@ const BrandCard: React.FC<BrandCardProps> = ({
             alt="Brand Image"
           />
         </div>
-        <CardTitle className="col-span-8 md:col-span-8 mx-4 md:mx-20 text-center">
+        <CardTitle className="my-4 md:my-0 col-span-8 md:col-span-8 mx-4 md:mx-20 text-center">
           {brandTitle}
         </CardTitle>
         <div className="flex justify-center col-span-2 md:col-span-2">
@@ -36,7 +38,7 @@ const BrandCard: React.FC<BrandCardProps> = ({
             variant="outline"
             onClick={() => handleBrandClick()}
           >
-            <p className="text-base">View More</p>
+            <p className="text-base leading-[1rem]">View More</p>
           </Button>
         </div>
       </Card>

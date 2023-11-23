@@ -21,13 +21,6 @@ const Brands = () => {
     });
   };
 
-  // const handleCallBack = (event: any) => {
-  //   console.log("callback", event);
-  //   if (event?.title === "Politicians")
-  //     navigate(`/categories/politicians?id=${event?.id}`);
-  //   else navigate(`/categories/celebrities?id=${event?.id}`);
-  // };
-
   let { loading, error, data } = getCategories();
 
   if (loading) {
@@ -47,17 +40,6 @@ const Brands = () => {
           className="w-full md:gap-6 flex flex-col md:flex-row justify-center items-center"
           id="peopleCards"
         >
-          {/* {data?.peopleCategories?.map?.((category) => {
-            return (
-              <PeopleCard
-                variant={
-                  category?.title === "Celebrity" ? "celebrity" : "politician"
-                }
-                handleClick={handleCallBack}
-                category={category}
-              />
-            );
-          })} */}
           <PeopleCard
             variant="celebrity"
             handleClick={handleCelebritiesClick}

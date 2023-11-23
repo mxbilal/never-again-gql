@@ -17,6 +17,7 @@ const Celebrities: React.FC = () => {
   const { loading, error, data, refetch } = getCategoryPeoples({ id });
 
   useEffect(() => {
+    if(first > 10)
     refetch({ value: "", first });
   }, [first]);
 

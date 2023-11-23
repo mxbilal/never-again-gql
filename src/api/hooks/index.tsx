@@ -28,13 +28,14 @@ interface Response {
   ) => Promise<ApolloQueryResult<any>> | undefined;
 }
 
-export function useBrands(props: brandsInput): Response {
+export function useBrands(props: any): Response {
   try {
-    let { orderBy, value, first } = props;
+    let { orderBy, value, first, skip } = props;
     const { loading, error, data, refetch } = useQuery(schema.brands, {
       variables: {
         orderBy,
         first,
+        skip,
         ...(value && value.length > 2 ? { value } : { value: "" }), // Only include value if it meets certain criteria
       },
     });

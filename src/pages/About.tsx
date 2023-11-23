@@ -5,7 +5,7 @@ import Ayat from "@/components/Ayat";
 const About = () => {
   return (
     <>
-      <section className="w-full flex flex-col justify-center items-center my-12 md:mx-0">
+      <section className="px-3 md:px-0 w-full flex flex-col justify-center items-center my-12 md:mx-0">
         <div className="w-full">
           <h2>Question</h2>
           <p className="mb-4">

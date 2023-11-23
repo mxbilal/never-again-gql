@@ -20,8 +20,13 @@ const PublicFigureCard: React.FC<PublicFigureCardProps> = ({
     console.log("handler", publicFigureSlug);
     const { id, name, peopleCategory } = publicFigureSlug;
     if (peopleCategory?.title === "Politicians")
-      navigate(`/categories/politicians/${name}`, { state: { id } });
-    else navigate(`/categories/celebrities/${name}`, { state: { id } });
+      navigate(`/categories/politicians/${name.toLowerCase()}`, {
+        state: { id, name },
+      });
+    else
+      navigate(`/categories/celebrities/${name.toLowerCase()}`, {
+        state: { id, name },
+      });
   };
 
   // const handlePublicFigureClick = (publicFigureSlug: string) => {
@@ -38,7 +43,7 @@ const PublicFigureCard: React.FC<PublicFigureCardProps> = ({
             className="mx-[0.75rem] md:max-h-[318px]"
           />
         </div>
-        <CardTitle className="mx-20 mb-2">{name}</CardTitle>
+        <CardTitle className="text-center mx-20 mb-2">{name}</CardTitle>
         <Button
           className="mx-[0.75rem]"
           variant="outline"

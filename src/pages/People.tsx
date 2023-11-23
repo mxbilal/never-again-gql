@@ -22,8 +22,13 @@ const People = () => {
   const handleCallBack = (event: any) => {
     console.log("callback", event);
     if (event?.title === "Politicians")
-      navigate(`/categories/politicians?id=${event?.id}`);
-    else navigate(`/categories/celebrities?id=${event?.id}`);
+      navigate(`/categories/politicians`, {
+        state: { id: event?.id },
+      });
+    else
+      navigate(`/categories/celebrities`, {
+        state: { id: event?.id },
+      });
   };
 
   function debounce() {
@@ -54,7 +59,7 @@ const People = () => {
 
   return (
     <>
-      <section className="w-full flex flex-col justify-center items-center">
+      <section className="px-3 md:px-0 w-full flex flex-col justify-center items-center">
         <div className="w-full px-6 md:px-3 my-4">
           <Search isBrandSearch={false} onSearch={handleSearch()} />
         </div>
@@ -70,6 +75,7 @@ const People = () => {
                 }
                 handleClick={handleCallBack}
                 category={category}
+                key={category?.id}
               />
             );
           })}
@@ -90,6 +96,7 @@ const People = () => {
           {pData &&
             pData?.peoples.map((people) => (
               <PublicFigureCard
+                key={people?.name}
                 name={people?.name}
                 variant="celebrity"
                 imageUrl={people?.profileUrl ?? Generic}

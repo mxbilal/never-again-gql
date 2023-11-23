@@ -6,7 +6,11 @@ import { PeopleCardProps } from "@/types";
 import { getCategoryTitle } from "@/utils/getCategoryTitle";
 import { getPeopleTypeImage } from "@/utils/getPeopleTypeImage";
 
-const PeopleCard: React.FC<PeopleCardProps> = ({ variant, handleClick,  category }) => {
+const PeopleCard: React.FC<PeopleCardProps> = ({
+  variant,
+  handleClick,
+  category,
+}) => {
   const title = getCategoryTitle("people", variant);
   const imageSrc = getPeopleTypeImage(variant);
 
@@ -18,7 +22,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ variant, handleClick,  category
           alt="Public figure category"
           className="mx-[0.75rem] w-[12.5rem] mb-4"
         />
-        <CardTitle className="mx-20 my-2">{title}</CardTitle>
+        <CardTitle className="text-center mx-20 my-2">{title}</CardTitle>
         <Button
           className="mx-[0.75rem]"
           variant="outline"

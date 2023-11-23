@@ -18,6 +18,7 @@ const Politicians: React.FC = () => {
     navigate(`/categories/politicians/${politicianName}`);
   };
   useEffect(() => {
+    if(first > 10)
     refetch({ value: "", first });
   }, [first]);
   if (loading) {
@@ -34,6 +35,7 @@ const Politicians: React.FC = () => {
         {data?.peopleCategory?.peoples?.map?.((people) => {
           return (
             <PublicFigureCard
+              key={people.name}
               name={people?.name}
               variant="celebrity"
               imageUrl={people?.profileUrl ?? Generic}

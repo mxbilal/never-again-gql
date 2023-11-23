@@ -2,8 +2,8 @@ import { gql } from "@apollo/client";
 
 export default {
   brands: gql`
-    query GetBrands($orderBy: BrandOrderByInput, $value: String, $first: Int) {
-      brands(orderBy: $orderBy, first: $first, where: { _search: $value }) {
+    query GetBrands($orderBy: BrandOrderByInput, $value: String, $first: Int, $skip: Int) {
+      brands(orderBy: $orderBy, first: $first, skip: $skip, where: { name_contains: $value }) {
         id
         description
         name
@@ -37,7 +37,10 @@ export default {
   `,
   categories: gql`
     query getCategories {
-      categories {
+      categories(
+        first: 100 
+        orderBy: createdAt_DESC
+      ) {
         id
         name
       }
