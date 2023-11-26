@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import Loader from "@/components/Loader";
 
 import { brandDetails } from "@/api/hooks";
+import Alternatives from "@/components/Alternatives";
 
 const Brand = () => {
   const location = useLocation();
@@ -53,12 +54,19 @@ const Brand = () => {
             {brand?.instructions}
           </CardDescription>
         </Card>
+        {/* ADD LOGIC HERE TO RENDER THE FOLLOWING CARD IF THERE ARE NO ALTERNATIVE BRANDS FOUND FROM THE QUERY, AFSHAL  */}
         <Card className="w-full flex flex-col justify-center items-center p-6">
           <CardDescription className="w-full">
             Alternatives
             <br />
             No alternatives researched yet. Help us out!
           </CardDescription>
+        </Card>
+        {/* ADD LOGIC HERE TO RENDER THE FOLLOWING CARD IF ALTERNATIVE BRANDS FOUND FROM THE QUERY, AFSHAL  */}
+        <Card className="w-full flex flex-col justify-center items-center p-6">
+          <div>
+            <Alternatives data={brand?.alternativeLinks ?? []} />
+          </div>
         </Card>
         <div className="flex justify-center items-center mt-4">
           <Button className="mx-[0.75rem] group" variant="outline">

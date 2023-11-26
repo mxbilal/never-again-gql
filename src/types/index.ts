@@ -23,6 +23,12 @@ export interface BrandCardProps {
   isApproved?: boolean;
 }
 
+export interface ApprovedBrandCardProps {
+  imageSrc: string;
+  brandTitle: string;
+  brand: { id: string; name: "string" };
+}
+
 export interface CorporationCardProps {
   imageSrc: string;
   corporationTitle: string;

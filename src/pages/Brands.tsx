@@ -23,6 +23,8 @@ const Brands = () => {
 
   let { loading, error, data } = getCategories();
 
+  console.log("categories are...", data);
+
   if (loading) {
     return <Loader />;
   }
