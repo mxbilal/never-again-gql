@@ -12,7 +12,7 @@ import BrandCategoryCard from "@/components/BrandCategoryCard";
 import ApprovedBrandsCarousel from "@/components/ApprovedBrandsCarousel";
 
 const ApprovedBrands = () => {
-  const itemsPerPage = 10;
+  const itemsPerPage = 50;
   const [value, setValue] = useState("");
   const [paginationVisible, setPaginationVisible] = useState(true);
   const [first, setFirst] = useState(itemsPerPage);
@@ -28,26 +28,9 @@ const ApprovedBrands = () => {
     first,
     skip: 0,
   });
-  let carosalData = useApprovedBrands({
-    orderBy: "createdAt_DESC",
-    value: "",
-    first: 100,
-    skip: 0,
-  });
-  function debounce() {
-    let timer;
-    return (args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        setValue(args);
-        setBrands([]);
-        refetch({ value: args, first: 10, skip: 0 });
-      }, 1000);
-    };
-  }
 
   const handleSearch = () => {
-    return debounce(value);
+    console.log("to do..."); // add search for approved brands
   };
 
   useEffect(() => {
@@ -92,7 +75,7 @@ const ApprovedBrands = () => {
     getAllPageBrands();
   }, [currentPage]);
 
-  if (loading || cloading || carosalData.loading) {
+  if (loading || cloading) {
     return <Loader />;
   }
 
@@ -105,11 +88,7 @@ const ApprovedBrands = () => {
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
-  console.log(carosalData);
-  const filteredCarosel =
-    !carosalData.loading &&
-    !carosalData.error &&
-    carosalData?.data?.approvedBrands.filter((ft) => ft.id !== null);
+
   const filteredCategories = cdata.categories.filter(
     (category) =>
       category.name !== "Celebrity" && category.name !== "Politician"
@@ -130,8 +109,7 @@ const ApprovedBrands = () => {
             <h3>Latest Approved Brands</h3>
           </div>
           <div>
-            <ApprovedBrandsCarousel data={filteredCarosel} />
-            {/* ApprovedBrandsCarousel */}
+            <ApprovedBrandsCarousel />
           </div>
         </div>
         <div
@@ -139,7 +117,11 @@ const ApprovedBrands = () => {
           id="brandCategoryCards"
         >
           {filteredCategories.map((category) => (
-            <BrandCategoryCard key={category.id} variant={category.name} />
+            <BrandCategoryCard
+              key={category.id}
+              variant={category.name}
+              isApproved={true}
+            />
           ))}
         </div>
         <div className="w-full" id="allApprovedBrands">
@@ -164,10 +146,9 @@ const ApprovedBrands = () => {
           </div>
           {paginationVisible && (
             <div className="w-full px-3 md:px-0 my-3 flex justify-between items-center">
-              {/* <Button variant="outline" onClick={() => getAllBrands()}>
+              <Button variant="outline" onClick={() => getAllBrands()}>
                 <p className="text-base leading-[1rem]">View All</p>
-              </Button> */}
-              <div></div>
+              </Button>
               <Paginator
                 totalItems={count}
                 itemsPerPage={itemsPerPage}

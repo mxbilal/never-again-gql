@@ -6,10 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import ApprovedBrandCard from "../ApprovedBrandCard/ApprovedBrandCard";
 
-const imageSrc =
-  "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png";
-
-const ApprovedBrandsCarousel = ({ data }) => {
+const ApprovedBrandsCarousel = () => {
   const dummyData = [
     {
       id: "1",
@@ -35,43 +32,37 @@ const ApprovedBrandsCarousel = ({ data }) => {
     {
       id: "4",
       name: "Brand 4",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand4-image.png",
       brandTitle: "Brand Title 4",
     },
     {
       id: "5",
       name: "Brand 5",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand5-image.png",
       brandTitle: "Brand Title 5",
     },
     {
       id: "6",
       name: "Brand 6",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand6-image.png",
       brandTitle: "Brand Title 6",
     },
     {
       id: "7",
       name: "Brand 7",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand7-image.png",
       brandTitle: "Brand Title 7",
     },
     {
       id: "8",
       name: "Brand 8",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand8-image.png",
       brandTitle: "Brand Title 8",
     },
     {
       id: "9",
       name: "Brand 9",
-      imageSrc:
-        "https://png.pngtree.com/png-clipart/20220228/original/pngtree-icc-cricket-world-cup-trophy-realistic-3d-design-png-image_7323759.png",
+      imageSrc: "https://example.com/brand9-image.png",
       brandTitle: "Brand Title 9",
     },
   ];
@@ -90,11 +81,10 @@ const ApprovedBrandsCarousel = ({ data }) => {
     <div className="content text-center mb-10">
       <div className="container mx-auto">
         <Slider {...settings}>
-          {data.map((brandData) => (
+          {dummyData.map((brandData) => (
             <ApprovedBrandCard
-              key={brandData.id}
-              imageSrc={imageSrc}
-              brandTitle={brandData.name}
+              imageSrc={brandData.imageSrc}
+              brandTitle={brandData.brandTitle}
               brand={{ id: brandData.id, name: brandData.name }}
             />
           ))}

@@ -65,7 +65,7 @@ const Brand = () => {
         {/* ADD LOGIC HERE TO RENDER THE FOLLOWING CARD IF ALTERNATIVE BRANDS FOUND FROM THE QUERY, AFSHAL  */}
         <Card className="w-full flex flex-col justify-center items-center p-6">
           <div>
-            <Alternatives data={brand?.alternativeLinks ?? []} />
+            <Alternatives />
           </div>
         </Card>
         <div className="flex justify-center items-center mt-4">

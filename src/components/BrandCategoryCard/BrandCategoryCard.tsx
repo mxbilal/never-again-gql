@@ -7,14 +7,25 @@ import { BrandCategoryCardProps } from "@/types";
 import { getCategoryTitle } from "@/utils/getCategoryTitle";
 import { getBrandCategoryIcon } from "@/utils/getBrandCategoryIcon";
 
-const BrandCategoryCard: React.FC<BrandCategoryCardProps> = ({ variant }) => {
+const BrandCategoryCard: React.FC<BrandCategoryCardProps> = ({
+  variant,
+  isApproved,
+}) => {
   const navigate = useNavigate();
+
+  // if isApproved is true, call the queries for approved brands
 
   const title = getCategoryTitle("brand", variant);
   const categoryIcon = getBrandCategoryIcon(variant);
 
+  console.log("isApproved...", isApproved);
+
   const handleBrandCategoryClick = () => {
-    navigate(`/categories/${title.toLocaleLowerCase()}`, {
+    const url = isApproved
+      ? `/categories/approved-brands/${title.toLocaleLowerCase()}`
+      : `/categories/${title.toLocaleLowerCase()}`;
+
+    navigate(url, {
       state: { name: title },
     });
   };

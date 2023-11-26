@@ -12,7 +12,7 @@ const ApprovedBrandCard: React.FC<ApprovedBrandCardProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const basePath = "/approved-brands";
+  const basePath = "/categories/approved-brands";
 
   const handleBrandClick = () => {
     const slugifiedName = slugify(brand?.name, { lower: true });

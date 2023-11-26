@@ -43,6 +43,7 @@ export interface ProductCardProps {
 
 export interface BrandCategoryCardProps {
   variant: BrandCategoryOptions;
+  isApproved?: boolean;
 }
 
 export interface SearchProps {

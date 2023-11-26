@@ -27,7 +27,7 @@ const Navbar = () => {
               className="fa-solid fa-certificate"
               style={{ fontSize: "inherit", color: "#bfff00" }}
             />
-            <Link to="/approved-brands"> Approved Brands</Link>
+            <Link to="/categories/approved-brands"> Approved Brands</Link>
           </div>
           <div className="text-xl">
             <Link to="/scan">Scan </Link>

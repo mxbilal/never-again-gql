@@ -85,12 +85,6 @@ export default {
             name
           }
         }
-        alternativeLinks {
-          ... on ApprovedBrand {
-            id
-            name
-          }
-        }
       }
     }
   `,
