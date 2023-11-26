@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import { PublicFigureCardProps } from "@/types";
@@ -13,25 +14,19 @@ const PublicFigureCard: React.FC<PublicFigureCardProps> = ({
   people,
 }) => {
   const navigate = useNavigate();
-  // const publicFigureSlug: string = "gal-gadot";
-  console.log(variant);
-  // based on variant the correct handler funtion should be called
+
   const handlePublicFigureClick = (publicFigureSlug: object) => {
-    console.log("handler", publicFigureSlug);
     const { id, name, peopleCategory } = publicFigureSlug;
+    const slugifiedName = slugify(name, { lower: true });
     if (peopleCategory?.title === "Politicians")
-      navigate(`/categories/politicians/${name.toLowerCase()}`, {
+      navigate(`/categories/politicians/${slugifiedName}`, {
         state: { id, name },
       });
     else
-      navigate(`/categories/celebrities/${name.toLowerCase()}`, {
+      navigate(`/categories/celebrities/${slugifiedName}`, {
         state: { id, name },
       });
   };
-
-  // const handlePublicFigureClick = (publicFigureSlug: string) => {
-  // navigate(`/categories/politicians/${publicFigureSlug}`);
-  // };
 
   return (
     <div className="w-full">

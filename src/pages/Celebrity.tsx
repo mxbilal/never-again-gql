@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -20,10 +20,8 @@ const Celebrity = () => {
 
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log("in Celebrity, data", data);
-
   return (
-    <section className="w-full flex flex-col justify-center items-start my-12 md:flex-row-reverse md:mx-0">
+    <section className="px-3 md:px-0 w-full flex flex-col justify-center items-start my-12 md:flex-row-reverse md:mx-0">
       <div className="w-full md:w-1/3 h-full">
         <Card className="w-full flex flex-col justify-center items-center p-6">
           <div className="w-full">
@@ -45,7 +43,11 @@ const Celebrity = () => {
             <CardDescription className="w-full">
               Unfollow at the following platforms:
             </CardDescription>
-            <Socials />
+            <Socials
+              facebookLink={data?.people?.facebookUrl}
+              instagramLink={data?.people?.instagramUrl}
+              twitterLink={data?.people?.twitterUrl}
+            />
           </div>
         </Card>
       </div>

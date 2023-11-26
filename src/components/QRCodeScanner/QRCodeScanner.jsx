@@ -1,3 +1,4 @@
+// NOT USED, KEPT AS A BACKUP SCANNER WITH OPTION TO UPLOAD BARCODE/QR CODE
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect } from "react";
 

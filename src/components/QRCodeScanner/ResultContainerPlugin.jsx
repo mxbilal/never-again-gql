@@ -1,3 +1,4 @@
+// NOT USED, KEPT AS A BACKUP SCANNER WITH OPTION TO UPLOAD BARCODE/QR CODE
 import React, { useEffect, useState } from "react";
 import { getScannedBrands } from "@/api/hooks";
 

@@ -136,31 +136,3 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-/* Scanner styling */
-#html5qr-code-full-region__scan_region {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.html5-qrcode-element {
-  background-color: #bfff00;
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.5rem;
-  transition: background-color 0.3s, color 0.3s;
-  margin-bottom: 1.25%;
-}
-
-#html5-qrcode-anchor-scan-type-change {
-  background-color: #bfff00;
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.5rem;
-  transition: background-color 0.3s, color 0.3s;
-  margin-bottom: 1.5%;
-}
-
-#html5-qrcode-anchor-scan-type-change:hover {
-  background-color: #000;
-  color: #bfff00;
-}

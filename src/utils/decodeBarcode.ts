@@ -8,13 +8,12 @@ const decodeBarcode = async (barcodeNumber: string): Promise<string | null> => {
     const response = await fetch(url, { method: "get" });
     // console.log("response", await response.json())
     const data = await response.json();
-    console.log("--------------")
-    const productBrand = data.product.brand;
+    const productData = data.product;
 
-    if (productBrand !== null) {
-      return productBrand;
+    if (productData !== null) {
+      return productData;
     } else {
-      throw new Error("This barcode's brand was not found in the database");
+      throw new Error("This barcode's product was not found in the database");
     }
   } catch (error) {
     console.error("Error decoding barcode:", error);

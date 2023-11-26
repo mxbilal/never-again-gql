@@ -28,7 +28,7 @@ const BarcodeDecoder: React.FC<BarcodeDecoderProps> = ({ barcodeNumber }) => {
     fetchData();
   }, [url]);
 
-  console.log("Scanned product brand is...", productBrand);
+  // console.log("Scanned product brand is...", productBrand);
 
   return { productBrand };
 };

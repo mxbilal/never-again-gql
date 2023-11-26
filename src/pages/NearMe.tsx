@@ -24,18 +24,14 @@ const NearMe: React.FC = () => {
       getBrandsNearMe();
     }
   }, [userLocation, countData]);
-  console.log("data is here", data);
 
   useEffect(() => {
-    console.log("data is here", data);
-
     if (data?.brands?.length) {
       setBrands([...brands, ...data?.brands]);
     }
   }, [data?.brands]);
   async function getBrandsNearMe() {
     // setLoading(true)
-    console.log("countData", countData);
 
     if (countData?.brandsConnection?.aggregate?.count >= 100) {
       for (
@@ -69,7 +65,7 @@ const NearMe: React.FC = () => {
   const filteredBrands = brands?.filter(
     (brand: any) => brand?.gps?.distance && brand?.gps?.distance / 1000 < 6.44
   );
-  console.log("Brands near me", filteredBrands, "brands", brands);
+  // console.log("Brands near me", filteredBrands, "brands", brands);
 
   return (
     <>

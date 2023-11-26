@@ -4,7 +4,7 @@ const Faq = () => {
   return (
     <>
       <section className="w-full flex flex-col justify-center items-center my-12 md:mx-0">
-        <div className="w-full">
+        <div className="px-3 md:px-0 w-full">
           <h2>FAQs</h2>
           <h3>Question</h3>
           <p>

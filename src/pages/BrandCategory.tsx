@@ -13,13 +13,11 @@ const BrandCategory = () => {
   const { name } = location.state;
   let { loading, error, data, refetch } = exploreCategories(name, "", first);
   useEffect(() => {
-    console.log("view all");
     refetch({ value: "", first });
   }, [first]);
   function debounce() {
     let timer;
     return (args) => {
-      console.log("args", args);
       clearTimeout(timer);
       timer = setTimeout(() => {
         refetch({ value: args });
@@ -38,18 +36,9 @@ const BrandCategory = () => {
     <section className="w-full flex flex-col justify-center items-center">
       {/* <div className="w-full px-6 md:px-3 my-4">
         <Search isBrandSearch={true} onSearch={handleSearch()} />
-      </div>
+      </div>*/}
       <div
-        className="w-full my-3 px-3 flex justify-between items-center"
-        id="latestBrands"
-      >
-        <h3>Latest brands</h3>
-        <Button variant="outline" onClick={() => setFirst(1000)}>
-          <p className="text-base">View All</p>
-        </Button>
-      </div> */}
-      <div
-        className="my-12 w-full flex flex-col flex-nowrap justify-center items-center"
+        className="px-3 md:px-0 my-12 w-full flex flex-col flex-nowrap justify-center items-center"
         id="brandCards"
       >
         {data &&
@@ -64,7 +53,7 @@ const BrandCategory = () => {
       </div>
       {/* <div className="w-full my-3 px-3 flex justify-start items-start">
         <Button variant="outline" onClick={() => setFirst(1000)}>
-          <p className="text-base">View All</p>
+          <p className="text-base leading-[1rem]">View All</p>
         </Button>
       </div> */}
     </section>

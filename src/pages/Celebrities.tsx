@@ -17,8 +17,7 @@ const Celebrities: React.FC = () => {
   const { loading, error, data, refetch } = getCategoryPeoples({ id });
 
   useEffect(() => {
-    if(first > 10)
-    refetch({ value: "", first });
+    if (first > 10) refetch({ value: "", first });
   }, [first]);
 
   if (loading) {
@@ -27,7 +26,6 @@ const Celebrities: React.FC = () => {
 
   if (error) return <p>Error : {error.message}</p>;
 
-  console.log("data", data);
   return (
     <section className="w-full my-12 flex flex-col justify-center items-center">
       <div
@@ -48,7 +46,7 @@ const Celebrities: React.FC = () => {
       </div>
       <div className="w-full px-6 md:px-3 flex justify-start items-start my-3">
         <Button variant="outline" onClick={() => setFirst(1000)}>
-          <p className="text-base">View All</p>
+          <p className="text-base leading-[1rem]">View All</p>
         </Button>
       </div>
     </section>

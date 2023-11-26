@@ -14,7 +14,7 @@ const Paginator: React.FC<PaginatorProps> = ({
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const pageRange = 5;
+  const pageRange = 3;
 
   const getPageNumbers = () => {
     const pageNumbers = [];
@@ -42,28 +42,29 @@ const Paginator: React.FC<PaginatorProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center mt-4">
+    <div className="flex items-center justify-center text-center">
+      <p className="text-sm md:text-base">{totalItems} items</p>
       {/* Previous button */}
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
+        className="ml-1 md:ml-2 px-2 sm:px-4 py-2 bg-neverLime text-neverDark rounded mr-2"
       >
         {"<"}
       </button>
 
       {/* Dynamic page buttons */}
-      <div className="space-x-2">
+      <div className="space-x-1 sm:space-x-2">
         {getPageNumbers().map((page, index) => (
           <button
             key={index}
             onClick={() =>
               typeof page === "number" ? handlePageChange(page) : null
             }
-            className={`px-4 py-2 ${
+            className={`px-2 sm:px-4 py-2 ${
               page === currentPage
-                ? "bg-blue-500 text-white rounded"
-                : "bg-gray-200 text-gray-800 rounded hover:bg-blue-200 hover:text-white"
+                ? "bg-neverLime text-neverDark rounded"
+                : "bg-gray-200 text-neverDark rounded hover:bg-neverDark hover:text-neverLime"
             }`}
           >
             {page}
@@ -75,7 +76,7 @@ const Paginator: React.FC<PaginatorProps> = ({
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-blue-500 text-white rounded ml-2"
+        className="px-2 sm:px-4 py-2 bg-neverLime text-neverDark rounded ml-2"
       >
         {">"}
       </button>

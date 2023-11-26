@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import slugify from "slugify";
+import slugify from "slugify";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
 import { BrandCardProps } from "@/types";
@@ -9,15 +9,18 @@ const BrandCard: React.FC<BrandCardProps> = ({
   imageSrc,
   brandTitle,
   brand,
+  isApproved = false,
 }) => {
   const navigate = useNavigate();
+
+  const basePath = isApproved ? "/approved-brands" : "/categories/brands";
+
   const handleBrandClick = () => {
-    navigate(`/categories/brands/${brand?.name.toLocaleLowerCase()}`, {
-      state: { id: brand.id, name: brand?.name },
+    const slugifiedName = slugify(brand?.name, { lower: true });
+    navigate(`${basePath}/${slugifiedName}`, {
+      state: { id: brand?.id, name: brand?.name, isApproved },
     });
   };
-
-  // const brandSlug: string = slugify(brandTitle, { lower: true });
 
   return (
     <div className="w-full">

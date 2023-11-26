@@ -1,9 +1,62 @@
 import { gql } from "@apollo/client";
 
 export default {
+  approvedBrands: gql`
+    query GetApprovedBrands(
+      $orderBy: ApprovedBrandOrderByInput
+      $value: String
+      $first: Int
+      $skip: Int
+    ) {
+      approvedBrands(
+        orderBy: $orderBy
+        first: $first
+        skip: $skip
+        where: { name_contains: $value }
+      ) {
+        id
+        description
+        name
+        icon {
+          url
+        }
+        path
+      }
+    }
+  `,
+  approvedBrandDetails: gql`
+    query getApprovedBrandDetails($id: ID) {
+      approvedBrand(where: { id: $id }) {
+        id
+        name
+        descriptionSmall
+        description
+        subTitle
+        instructions
+        icon {
+          url
+        }
+        linking {
+          ... on Category {
+            name
+          }
+        }
+      }
+    }
+  `,
   brands: gql`
-    query GetBrands($orderBy: BrandOrderByInput, $value: String, $first: Int, $skip: Int) {
-      brands(orderBy: $orderBy, first: $first, skip: $skip, where: { name_contains: $value }) {
+    query GetBrands(
+      $orderBy: BrandOrderByInput
+      $value: String
+      $first: Int
+      $skip: Int
+    ) {
+      brands(
+        orderBy: $orderBy
+        first: $first
+        skip: $skip
+        where: { name_contains: $value }
+      ) {
         id
         description
         name
@@ -37,10 +90,7 @@ export default {
   `,
   categories: gql`
     query getCategories {
-      categories(
-        first: 100 
-        orderBy: createdAt_DESC
-      ) {
+      categories(first: 100, orderBy: createdAt_DESC) {
         id
         name
       }
@@ -104,6 +154,9 @@ export default {
         height
         profileUrl
         proofLinks
+        facebookUrl
+        instagramUrl
+        twitterUrl
       }
     }
   `,
@@ -166,11 +219,21 @@ export default {
     }
   `,
   brandCount: gql`
-    query getBrandCount{
+    query getBrandCount {
       brandsConnection {
         aggregate {
           count
         }
       }
-    }`,
+    }
+  `,
+  approvedBrandCount: gql`
+    query getApprovedBrandCount {
+      approvedBrandsConnection {
+        aggregate {
+          count
+        }
+      }
+    }
+  `,
 };

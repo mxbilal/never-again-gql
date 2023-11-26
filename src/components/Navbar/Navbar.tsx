@@ -23,6 +23,13 @@ const Navbar = () => {
             <Link to="/near-me">Near Me</Link>
           </div>
           <div className="text-xl">
+            <i
+              className="fa-solid fa-certificate"
+              style={{ fontSize: "inherit", color: "#bfff00" }}
+            />
+            <Link to="/approved-brands"> Approved Brands</Link>
+          </div>
+          <div className="text-xl">
             <Link to="/scan">Scan </Link>
             <i
               className="fas fa-barcode fa-lg"

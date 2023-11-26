@@ -4,7 +4,7 @@ const Boycott = () => {
   return (
     <>
       <section className="w-full flex flex-col justify-center items-center my-12 md:mx-0">
-        <div className="w-full">
+        <div className="px-3 md:px-0 w-full">
           <h1>How, Why and Proof it Works</h1>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.

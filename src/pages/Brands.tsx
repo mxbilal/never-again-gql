@@ -57,6 +57,12 @@ const Brands = () => {
             <BrandCategoryCard key={category.id} variant={category.name} />
           ))}
         </div>
+        {/* <div
+          className="w-full md:gap-6 flex flex-col md:flex-row justify-center items-center"
+          id="corporationCards"
+        >
+          <p>CORPORATIONS</p>
+        </div> */}
       </section>
     </>
   );

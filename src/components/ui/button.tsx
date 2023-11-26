@@ -14,7 +14,7 @@ const buttonVariants = cva(
         default:
           "bg-neverLime text-primary-foreground hover:bg-primary/90 font-sans",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "border-[3px] border-neverBlack bg-destructive text-destructive-foreground hover:bg-black hover:text-destructive",
         outline:
           "border-[3px] border-neverBlack bg-neverLime hover:bg-black hover:text-neverLime font-sans",
         secondary:

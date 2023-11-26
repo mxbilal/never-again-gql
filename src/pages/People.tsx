@@ -20,7 +20,6 @@ const People = () => {
   const { pLoad, pError, pData, refetch } = getPeople({ value, first });
 
   const handleCallBack = (event: any) => {
-    console.log("callback", event);
     if (event?.title === "Politicians")
       navigate(`/categories/politicians`, {
         state: { id: event?.id },
@@ -34,7 +33,6 @@ const People = () => {
   function debounce() {
     let timer;
     return (args) => {
-      console.log("args", args);
       clearTimeout(timer);
       timer = setTimeout(() => {
         refetch({ value: args });
@@ -46,16 +44,12 @@ const People = () => {
     return debounce(value);
   };
   useEffect(() => {
-    console.log("rr");
     refetch({ value: "", first });
   }, [first]);
   if (loading) {
     return <Loader />;
   }
   if (error) return <p>Error : {error.message}</p>;
-
-  console.log("people categories data", data, first);
-  console.log("people data", pData);
 
   return (
     <>
@@ -86,7 +80,7 @@ const People = () => {
         >
           <h3>Latest public figures</h3>
           <Button variant="outline" onClick={() => setFirst(1000)}>
-            <p className="text-base">View All</p>
+            <p className="text-base leading-[1rem]">View All</p>
           </Button>
         </div>
         <div

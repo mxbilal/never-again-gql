@@ -14,7 +14,9 @@ const BrandCategoryCard: React.FC<BrandCategoryCardProps> = ({ variant }) => {
   const categoryIcon = getBrandCategoryIcon(variant);
 
   const handleBrandCategoryClick = () => {
-    navigate(`/categories/${title.toLocaleLowerCase()}`, { state: { name: title } });
+    navigate(`/categories/${title.toLocaleLowerCase()}`, {
+      state: { name: title },
+    });
   };
 
   return (

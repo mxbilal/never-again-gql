@@ -28,6 +28,42 @@ interface Response {
   ) => Promise<ApolloQueryResult<any>> | undefined;
 }
 
+// Approved brands
+
+export function useApprovedBrands(props: any): Response {
+  try {
+    let { orderBy, value, first, skip } = props;
+    const { loading, error, data, refetch } = useQuery(schema.approvedBrands, {
+      variables: {
+        orderBy,
+        first,
+        skip,
+        ...(value && value.length > 2 ? { value } : { value: "" }), // Only include value if it meets certain criteria
+      },
+    });
+
+    return { loading, error, data, refetch };
+  } catch (err) {
+    console.error("Error in useApprovedBrands:", err);
+    return { loading: false };
+  }
+}
+
+export function approvedBrandDetails(props: ID): Response {
+  try {
+    let { id } = props;
+    const { loading, error, data } = useQuery(schema.approvedBrandDetails, {
+      variables: { id },
+    });
+    return { loading, error, data };
+  } catch (err) {
+    console.log("error", err);
+    return { loading: false };
+  }
+}
+
+// Brands
+
 export function useBrands(props: any): Response {
   try {
     let { orderBy, value, first, skip } = props;
@@ -46,6 +82,7 @@ export function useBrands(props: any): Response {
     return { loading: false };
   }
 }
+
 export function brandDetails(props: ID): Response {
   try {
     let { id } = props;
@@ -182,17 +219,15 @@ export function brandsNearMe({
   }
 }
 
-export function getScannedBrands(value: any, first: any, skip: any) {
+export function getScannedBrands({value}: any) {
   try {
-    const { loading, error, data } = useQuery(schema.scanBrands, {
+    const { loading, error, data, refetch } = useQuery(schema.scanBrands, {
       variables: {
-        value,
-        first,
-        skip,
+        value
       },
     });
 
-    return { scanLoading: loading, scanError: error, scanData: data };
+    return { scanLoading: loading, scanError: error, scanData: data, refetch };
   } catch (err) {
     console.error("Error in useBrands:", err);
     return { loading: false };
@@ -206,6 +241,17 @@ export function getBrandCount() {
     return { countLoading: loading, countError: error, countData: data };
   } catch (err) {
     console.error("Error in getBrandCount:", err);
+    return { loading: false };
+  }
+}
+
+export function getApprovedBrandCount() {
+  try {
+    const { loading, error, data } = useQuery(schema.approvedBrandCount);
+
+    return { countLoading: loading, countError: error, countData: data };
+  } catch (err) {
+    console.error("Error in getApprovedBrandCount:", err);
     return { loading: false };
   }
 }
