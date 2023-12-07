@@ -120,7 +120,7 @@ const Scan = () => {
       setLoading(false);
     }
   };
-
+  //
   const onNewScanResult = async (scannedNumber: string) => {
     setLoading(true);
     setScannedNumber(scannedNumber);
