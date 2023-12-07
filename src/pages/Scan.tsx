@@ -136,7 +136,7 @@ const Scan = () => {
       name: decodedProductBrand?.name || "",
       brand: decodedProductBrand?.brand || "",
     });
-  };
+  }; //
 
   if (loading) {
     return <Loader />;
